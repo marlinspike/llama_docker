@@ -59,7 +59,15 @@ python convert-hf-to-gguf.py \
   --outfile /path/to/output/llama-3.1-8b.gguf
 ```
 
+For example, here's a model conversion command:
+```
+python convert_hf_to_gguf.py \\n  /Users/reubencleetus/code/python/ossllm/llama_docker/model_cache/models--meta-llama--Llama-3.1-8B/snapshots/d04e592bb4f6aa9cfee91e2e20afa771667e1d4b \\n  --outfile /Users/reubencleetus/code/python/ossllm/llama_docker/model_cache_gguf/llama-3.1-8b.gguf\n
+```
+
+
 - Option B: Letting the Script Download the Model
+This will only work for GGUF Models in the Hugging Face Model Hub. Llama 3.1 isn't distributed by Meta in GGUF format, so you'll need to download and convert it manually. Otherwise, you can download a version of the model that's already in GGUF format.
+
 Set your Hugging Face API token:
 ```
 export HUGGINGFACEHUB_API_TOKEN=hf_your_huggingface_token
