@@ -1,20 +1,28 @@
-FROM python:3.9-slim
+# Use the official Python image as base
+FROM python:3.11-slim
 
-ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
-
-RUN apt-get update && apt-get install -y \
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    cmake \
     build-essential \
-    libopenblas-dev \
-    libomp-dev \
     && rm -rf /var/lib/apt/lists/*
 
+# Set the working directory
 WORKDIR /app
 
-COPY requirements.txt /app/requirements.txt
-RUN pip install --no-cache-dir -r /app/requirements.txt
+# Copy the requirements file and install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY app /app
+# Copy the application code
+COPY . .
 
-CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "main:app", "--bind", "0.0.0.0:8000"]
+# Copy the pre-converted GGUF model into the Docker image
+COPY ./model_cache_gguf/llama-3.1-8b.gguf ./model_cache_gguf/llama-3.1-8b.gguf
+
+# Expose the application port
+EXPOSE 8000
+
+# Command to run the application
+CMD ["python", "llama.py"]

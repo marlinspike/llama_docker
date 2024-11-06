@@ -1,6 +1,9 @@
-transformers==4.46.2
-torch==2.2.0
-fastapi==0.105.0
-uvicorn==0.30.0
-gunicorn==21.2.0
-python-dotenv==1.0.1
+transformers>=4.46.2
+torch>=2.2.0
+fastapi>=0.105.0
+uvicorn>=0.30.0
+gunicorn>=21.2.0
+python-dotenv>=1.0.1
+llama-cpp-python
+sentencepiece>=0.2.0
+huggingface_hub>=0.17.3
