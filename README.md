@@ -149,16 +149,3 @@ curl -X POST "http://localhost:8000/generate" \
 
 ### License
 This project is licensed under the MIT License.
-
-Additional Notes
-Model Licensing: Ensure you comply with the licensing terms of the Llama 3.1 model when downloading and using it.
-Hardware Requirements: The application may require significant CPU and memory resources, especially for larger models.
-GPU Support: For GPU acceleration, ensure CUDA is installed and llama-cpp-python is installed with CUDA support.
-Contributing
-Contributions are welcome! Please open an issue or submit a pull request.
-
-Contact
-For questions or support, please contact your-email@example.com.
-
-Summary
-You've now dockerized your application and have a comprehensive README.md to guide users through configuration, model conversion, and running the app. The application is ready to be shared or deployed as needed.
